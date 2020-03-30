@@ -5,7 +5,7 @@
    "metadata": {},
    "source": [
     "## Case Study \n",
-    "# Covid-19 in Australia, and the Myths and Realities of Exponential Growth"
+    "# Covid-19 in Australia"
    ]
   },
   {
@@ -84,7 +84,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 1,
+   "execution_count": 2,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -95,49 +95,8 @@
    ]
   },
   {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "Since this case study was first written, new versions of the time series data have been made available, including a `json` version. \n",
-    "\n",
-    "In our second Covid-19 case study we will investigate using the json version. As we know json is a structured format - essentially a dictionary - and is able to include more metadata. We would expect it to be more effective and robust to changes in the data. Let's take a look.\n",
-    "\n",
-    "First, let's have a look at the json data file &rarr;\n",
-    "\n",
-    "---"
-   ]
-  },
-  {
    "cell_type": "code",
-   "execution_count": 7,
-   "metadata": {},
-   "outputs": [
-    {
-     "ename": "ValueError",
-     "evalue": "Expected object or value",
-     "output_type": "error",
-     "traceback": [
-      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
-      "\u001b[0;31mValueError\u001b[0m                                Traceback (most recent call last)",
-      "\u001b[0;32m<ipython-input-7-b161c5835f47>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[1;32m      1\u001b[0m \u001b[0mCOVID_JSON\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0;34m\"Data/2020-03-22-time-series-19-covid-combined.json\"\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 2\u001b[0;31m \u001b[0mcovid\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mpd\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mread_json\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mCOVID_JSON\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      3\u001b[0m \u001b[0mcovid\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
-      "\u001b[0;32m/opt/anaconda3/lib/python3.7/site-packages/pandas/io/json/_json.py\u001b[0m in \u001b[0;36mread_json\u001b[0;34m(path_or_buf, orient, typ, dtype, convert_axes, convert_dates, keep_default_dates, numpy, precise_float, date_unit, encoding, lines, chunksize, compression)\u001b[0m\n\u001b[1;32m    590\u001b[0m         \u001b[0;32mreturn\u001b[0m \u001b[0mjson_reader\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    591\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 592\u001b[0;31m     \u001b[0mresult\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mjson_reader\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mread\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m    593\u001b[0m     \u001b[0;32mif\u001b[0m \u001b[0mshould_close\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    594\u001b[0m         \u001b[0;32mtry\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
-      "\u001b[0;32m/opt/anaconda3/lib/python3.7/site-packages/pandas/io/json/_json.py\u001b[0m in \u001b[0;36mread\u001b[0;34m(self)\u001b[0m\n\u001b[1;32m    715\u001b[0m             \u001b[0mobj\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0m_get_object_parser\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0m_combine_lines\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mdata\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0msplit\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"\\n\"\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    716\u001b[0m         \u001b[0;32melse\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 717\u001b[0;31m             \u001b[0mobj\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0m_get_object_parser\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mdata\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m    718\u001b[0m         \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mclose\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    719\u001b[0m         \u001b[0;32mreturn\u001b[0m \u001b[0mobj\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
-      "\u001b[0;32m/opt/anaconda3/lib/python3.7/site-packages/pandas/io/json/_json.py\u001b[0m in \u001b[0;36m_get_object_parser\u001b[0;34m(self, json)\u001b[0m\n\u001b[1;32m    737\u001b[0m         \u001b[0mobj\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0;32mNone\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    738\u001b[0m         \u001b[0;32mif\u001b[0m \u001b[0mtyp\u001b[0m \u001b[0;34m==\u001b[0m \u001b[0;34m\"frame\"\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 739\u001b[0;31m             \u001b[0mobj\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mFrameParser\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mjson\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m**\u001b[0m\u001b[0mkwargs\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mparse\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m    740\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    741\u001b[0m         \u001b[0;32mif\u001b[0m \u001b[0mtyp\u001b[0m \u001b[0;34m==\u001b[0m \u001b[0;34m\"series\"\u001b[0m \u001b[0;32mor\u001b[0m \u001b[0mobj\u001b[0m \u001b[0;32mis\u001b[0m \u001b[0;32mNone\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
-      "\u001b[0;32m/opt/anaconda3/lib/python3.7/site-packages/pandas/io/json/_json.py\u001b[0m in \u001b[0;36mparse\u001b[0;34m(self)\u001b[0m\n\u001b[1;32m    847\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    848\u001b[0m         \u001b[0;32melse\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 849\u001b[0;31m             \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0m_parse_no_numpy\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m    850\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    851\u001b[0m         \u001b[0;32mif\u001b[0m \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mobj\u001b[0m \u001b[0;32mis\u001b[0m \u001b[0;32mNone\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
-      "\u001b[0;32m/opt/anaconda3/lib/python3.7/site-packages/pandas/io/json/_json.py\u001b[0m in \u001b[0;36m_parse_no_numpy\u001b[0;34m(self)\u001b[0m\n\u001b[1;32m   1091\u001b[0m         \u001b[0;32mif\u001b[0m \u001b[0morient\u001b[0m \u001b[0;34m==\u001b[0m \u001b[0;34m\"columns\"\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   1092\u001b[0m             self.obj = DataFrame(\n\u001b[0;32m-> 1093\u001b[0;31m                 \u001b[0mloads\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mjson\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mprecise_float\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mprecise_float\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mdtype\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0;32mNone\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m   1094\u001b[0m             )\n\u001b[1;32m   1095\u001b[0m         \u001b[0;32melif\u001b[0m \u001b[0morient\u001b[0m \u001b[0;34m==\u001b[0m \u001b[0;34m\"split\"\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
-      "\u001b[0;31mValueError\u001b[0m: Expected object or value"
-     ]
-    }
-   ],
-   "source": [
-    "COVID_JSON=\"Data/2020-03-22-time-series-19-covid-combined.json\"\n",
-    "covid = pd.read_json(COVID_JSON)\n",
-    "covid"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 5,
+   "execution_count": 16,
    "metadata": {},
    "outputs": [
     {
@@ -328,13 +287,12 @@
        "[29707 rows x 8 columns]"
       ]
      },
-     "execution_count": 5,
+     "execution_count": 16,
      "metadata": {},
      "output_type": "execute_result"
     }
    ],
    "source": [
-    "# Using data from 16th March, 2020\n",
     "COVID_DATA=\"Data/2020-03-22-time-series-19-covid-combined.csv\"\n",
     "data = pd.read_csv(COVID_DATA)\n",
     "data"
@@ -342,7 +300,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 6,
+   "execution_count": 17,
    "metadata": {},
    "outputs": [
     {
@@ -359,7 +317,7 @@
        "dtype: object"
       ]
      },
-     "execution_count": 6,
+     "execution_count": 17,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -377,9 +335,24 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 18,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<class 'str'>\n",
+      "<class 'str'>\n",
+      "<class 'float'>\n",
+      "<class 'numpy.float64'>\n",
+      "<class 'numpy.float64'>\n",
+      "<class 'numpy.int64'>\n",
+      "<class 'numpy.int64'>\n",
+      "<class 'numpy.int64'>\n"
+     ]
+    }
+   ],
    "source": [
     "for datum in data.iloc[0]:\n",
     "    print(type(datum))"
@@ -387,18 +360,106 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 19,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>Date</th>\n",
+       "      <th>Country/Region</th>\n",
+       "      <th>Province/State</th>\n",
+       "      <th>Lat</th>\n",
+       "      <th>Long</th>\n",
+       "      <th>Confirmed</th>\n",
+       "      <th>Recovered</th>\n",
+       "      <th>Deaths</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <td>29034</td>\n",
+       "      <td>2020-03-21</td>\n",
+       "      <td>United Kingdom</td>\n",
+       "      <td>Isle of Man</td>\n",
+       "      <td>54.2361</td>\n",
+       "      <td>-4.5481</td>\n",
+       "      <td>1</td>\n",
+       "      <td>0</td>\n",
+       "      <td>0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <td>29035</td>\n",
+       "      <td>2020-03-22</td>\n",
+       "      <td>United Kingdom</td>\n",
+       "      <td>Isle of Man</td>\n",
+       "      <td>54.2361</td>\n",
+       "      <td>-4.5481</td>\n",
+       "      <td>5</td>\n",
+       "      <td>0</td>\n",
+       "      <td>0</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "             Date  Country/Region Province/State      Lat    Long  Confirmed  \\\n",
+       "29034  2020-03-21  United Kingdom    Isle of Man  54.2361 -4.5481          1   \n",
+       "29035  2020-03-22  United Kingdom    Isle of Man  54.2361 -4.5481          5   \n",
+       "\n",
+       "       Recovered  Deaths  \n",
+       "29034          0       0  \n",
+       "29035          0       0  "
+      ]
+     },
+     "execution_count": 19,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "data.loc[data[\"Country/Region\"] == \"United Kingdom\"].tail(2)"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 20,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<class 'str'>\n",
+      "<class 'str'>\n",
+      "<class 'str'>\n",
+      "<class 'numpy.float64'>\n",
+      "<class 'numpy.float64'>\n",
+      "<class 'numpy.int64'>\n",
+      "<class 'numpy.int64'>\n",
+      "<class 'numpy.int64'>\n"
+     ]
+    }
+   ],
    "source": [
     "for datum in data.loc[data[\"Country/Region\"] == \"United Kingdom\"].iloc[0]:\n",
     "    print(type(datum))"
@@ -417,9 +478,202 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 21,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>Date</th>\n",
+       "      <th>Country/Region</th>\n",
+       "      <th>Province/State</th>\n",
+       "      <th>Lat</th>\n",
+       "      <th>Long</th>\n",
+       "      <th>Confirmed</th>\n",
+       "      <th>Recovered</th>\n",
+       "      <th>Deaths</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <td>0</td>\n",
+       "      <td>2020-01-22</td>\n",
+       "      <td>Thailand</td>\n",
+       "      <td></td>\n",
+       "      <td>15.0000</td>\n",
+       "      <td>101.0000</td>\n",
+       "      <td>2</td>\n",
+       "      <td>0</td>\n",
+       "      <td>0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <td>1</td>\n",
+       "      <td>2020-01-23</td>\n",
+       "      <td>Thailand</td>\n",
+       "      <td></td>\n",
+       "      <td>15.0000</td>\n",
+       "      <td>101.0000</td>\n",
+       "      <td>3</td>\n",
+       "      <td>0</td>\n",
+       "      <td>0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <td>2</td>\n",
+       "      <td>2020-01-24</td>\n",
+       "      <td>Thailand</td>\n",
+       "      <td></td>\n",
+       "      <td>15.0000</td>\n",
+       "      <td>101.0000</td>\n",
+       "      <td>5</td>\n",
+       "      <td>0</td>\n",
+       "      <td>0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <td>3</td>\n",
+       "      <td>2020-01-25</td>\n",
+       "      <td>Thailand</td>\n",
+       "      <td></td>\n",
+       "      <td>15.0000</td>\n",
+       "      <td>101.0000</td>\n",
+       "      <td>7</td>\n",
+       "      <td>0</td>\n",
+       "      <td>0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <td>4</td>\n",
+       "      <td>2020-01-26</td>\n",
+       "      <td>Thailand</td>\n",
+       "      <td></td>\n",
+       "      <td>15.0000</td>\n",
+       "      <td>101.0000</td>\n",
+       "      <td>8</td>\n",
+       "      <td>2</td>\n",
+       "      <td>0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <td>29702</td>\n",
+       "      <td>2020-03-18</td>\n",
+       "      <td>Timor-Leste</td>\n",
+       "      <td></td>\n",
+       "      <td>-8.8742</td>\n",
+       "      <td>125.7275</td>\n",
+       "      <td>0</td>\n",
+       "      <td>0</td>\n",
+       "      <td>0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <td>29703</td>\n",
+       "      <td>2020-03-19</td>\n",
+       "      <td>Timor-Leste</td>\n",
+       "      <td></td>\n",
+       "      <td>-8.8742</td>\n",
+       "      <td>125.7275</td>\n",
+       "      <td>0</td>\n",
+       "      <td>0</td>\n",
+       "      <td>0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <td>29704</td>\n",
+       "      <td>2020-03-20</td>\n",
+       "      <td>Timor-Leste</td>\n",
+       "      <td></td>\n",
+       "      <td>-8.8742</td>\n",
+       "      <td>125.7275</td>\n",
+       "      <td>0</td>\n",
+       "      <td>0</td>\n",
+       "      <td>0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <td>29705</td>\n",
+       "      <td>2020-03-21</td>\n",
+       "      <td>Timor-Leste</td>\n",
+       "      <td></td>\n",
+       "      <td>-8.8742</td>\n",
+       "      <td>125.7275</td>\n",
+       "      <td>0</td>\n",
+       "      <td>0</td>\n",
+       "      <td>0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <td>29706</td>\n",
+       "      <td>2020-03-22</td>\n",
+       "      <td>Timor-Leste</td>\n",
+       "      <td></td>\n",
+       "      <td>-8.8742</td>\n",
+       "      <td>125.7275</td>\n",
+       "      <td>1</td>\n",
+       "      <td>0</td>\n",
+       "      <td>0</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "<p>29707 rows × 8 columns</p>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "             Date Country/Region Province/State      Lat      Long  Confirmed  \\\n",
+       "0      2020-01-22       Thailand                 15.0000  101.0000          2   \n",
+       "1      2020-01-23       Thailand                 15.0000  101.0000          3   \n",
+       "2      2020-01-24       Thailand                 15.0000  101.0000          5   \n",
+       "3      2020-01-25       Thailand                 15.0000  101.0000          7   \n",
+       "4      2020-01-26       Thailand                 15.0000  101.0000          8   \n",
+       "...           ...            ...            ...      ...       ...        ...   \n",
+       "29702  2020-03-18    Timor-Leste                 -8.8742  125.7275          0   \n",
+       "29703  2020-03-19    Timor-Leste                 -8.8742  125.7275          0   \n",
+       "29704  2020-03-20    Timor-Leste                 -8.8742  125.7275          0   \n",
+       "29705  2020-03-21    Timor-Leste                 -8.8742  125.7275          0   \n",
+       "29706  2020-03-22    Timor-Leste                 -8.8742  125.7275          1   \n",
+       "\n",
+       "       Recovered  Deaths  \n",
+       "0              0       0  \n",
+       "1              0       0  \n",
+       "2              0       0  \n",
+       "3              0       0  \n",
+       "4              2       0  \n",
+       "...          ...     ...  \n",
+       "29702          0       0  \n",
+       "29703          0       0  \n",
+       "29704          0       0  \n",
+       "29705          0       0  \n",
+       "29706          0       0  \n",
+       "\n",
+       "[29707 rows x 8 columns]"
+      ]
+     },
+     "execution_count": 21,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "data = pd.read_csv(COVID_DATA, na_filter=False)\n",
     "data"
@@ -427,9 +681,24 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 22,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<class 'str'>\n",
+      "<class 'str'>\n",
+      "<class 'str'>\n",
+      "<class 'numpy.float64'>\n",
+      "<class 'numpy.float64'>\n",
+      "<class 'numpy.int64'>\n",
+      "<class 'numpy.int64'>\n",
+      "<class 'numpy.int64'>\n"
+     ]
+    }
+   ],
    "source": [
     "for datum in data.iloc[0]:\n",
     "    print(type(datum))"
@@ -460,9 +729,121 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 10,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>Date</th>\n",
+       "      <th>Country/Region</th>\n",
+       "      <th>Province/State</th>\n",
+       "      <th>Lat</th>\n",
+       "      <th>Long</th>\n",
+       "      <th>Confirmed</th>\n",
+       "      <th>Recovered</th>\n",
+       "      <th>Deaths</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <td>0</td>\n",
+       "      <td>2020-01-22</td>\n",
+       "      <td>Thailand</td>\n",
+       "      <td></td>\n",
+       "      <td>15.0</td>\n",
+       "      <td>101.0</td>\n",
+       "      <td>2</td>\n",
+       "      <td>0</td>\n",
+       "      <td>0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <td>1</td>\n",
+       "      <td>2020-01-23</td>\n",
+       "      <td>Thailand</td>\n",
+       "      <td></td>\n",
+       "      <td>15.0</td>\n",
+       "      <td>101.0</td>\n",
+       "      <td>3</td>\n",
+       "      <td>0</td>\n",
+       "      <td>0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <td>2</td>\n",
+       "      <td>2020-01-24</td>\n",
+       "      <td>Thailand</td>\n",
+       "      <td></td>\n",
+       "      <td>15.0</td>\n",
+       "      <td>101.0</td>\n",
+       "      <td>5</td>\n",
+       "      <td>0</td>\n",
+       "      <td>0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <td>3</td>\n",
+       "      <td>2020-01-25</td>\n",
+       "      <td>Thailand</td>\n",
+       "      <td></td>\n",
+       "      <td>15.0</td>\n",
+       "      <td>101.0</td>\n",
+       "      <td>7</td>\n",
+       "      <td>0</td>\n",
+       "      <td>0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <td>4</td>\n",
+       "      <td>2020-01-26</td>\n",
+       "      <td>Thailand</td>\n",
+       "      <td></td>\n",
+       "      <td>15.0</td>\n",
+       "      <td>101.0</td>\n",
+       "      <td>8</td>\n",
+       "      <td>2</td>\n",
+       "      <td>0</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "        Date Country/Region Province/State   Lat   Long Confirmed Recovered  \\\n",
+       "0 2020-01-22       Thailand                 15.0  101.0         2         0   \n",
+       "1 2020-01-23       Thailand                 15.0  101.0         3         0   \n",
+       "2 2020-01-24       Thailand                 15.0  101.0         5         0   \n",
+       "3 2020-01-25       Thailand                 15.0  101.0         7         0   \n",
+       "4 2020-01-26       Thailand                 15.0  101.0         8         2   \n",
+       "\n",
+       "  Deaths  \n",
+       "0      0  \n",
+       "1      0  \n",
+       "2      0  \n",
+       "3      0  \n",
+       "4      0  "
+      ]
+     },
+     "execution_count": 10,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "data = pd.read_csv(COVID_DATA, na_filter=False, parse_dates=[\"Date\"])\n",
     "data.head()"
@@ -470,9 +851,24 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 11,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<class 'pandas._libs.tslibs.timestamps.Timestamp'>\n",
+      "<class 'str'>\n",
+      "<class 'str'>\n",
+      "<class 'numpy.float64'>\n",
+      "<class 'numpy.float64'>\n",
+      "<class 'str'>\n",
+      "<class 'str'>\n",
+      "<class 'str'>\n"
+     ]
+    }
+   ],
    "source": [
     "for datum in data.iloc[0]:\n",
     "    print(type(datum))"
@@ -480,9 +876,20 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 12,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "Timestamp('2020-01-22 00:00:00')"
+      ]
+     },
+     "execution_count": 12,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "data.at[0,\"Date\"]"
    ]
@@ -500,9 +907,20 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 13,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "Timestamp('2020-03-26 12:06:52.605027')"
+      ]
+     },
+     "execution_count": 13,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "now = pd.Timestamp.now()\n",
     "now"
@@ -510,18 +928,37 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 14,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "26 March 2020\n"
+     ]
+    }
+   ],
    "source": [
     "print(now.day, now.month_name(), now.year)"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 15,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "datetime.date(2020, 3, 26)"
+      ]
+     },
+     "execution_count": 15,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "now.date()"
    ]
